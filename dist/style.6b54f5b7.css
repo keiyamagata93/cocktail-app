@@ -138,8 +138,20 @@ table {
   border-spacing: 0;
 }
 
-body {
-  background-color: #000;
+body header, body footer {
+  text-align: center;
+}
+body .container {
+  width: 90%;
+  margin: 0 auto;
+}
+body form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+body form input {
+  height: 40px;
 }
 
 /*# sourceMappingURL=/style.6b54f5b7.css.map */

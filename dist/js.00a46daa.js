@@ -150,16 +150,114 @@ var Header = /*#__PURE__*/function () {
 }();
 
 exports.default = Header;
+},{}],"js/footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Footer = /*#__PURE__*/function () {
+  function Footer(holder) {
+    _classCallCheck(this, Footer);
+
+    this.holder = holder;
+    this.init();
+  }
+
+  _createClass(Footer, [{
+    key: "init",
+    value: function init() {
+      this.holder.insertAdjacentHTML("beforeend", "<footer>\n            <p>Oefening cocktail app - Kei Yamagata</p>\n        </footer>");
+    }
+  }]);
+
+  return Footer;
+}();
+
+exports.default = Footer;
+},{}],"js/form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Form = /*#__PURE__*/function () {
+  function Form(holder) {
+    var _this = this;
+
+    _classCallCheck(this, Form);
+
+    _defineProperty(this, "getData", function (e) {
+      e.preventDefault();
+
+      var val = _this.form.querySelector("#searchString").value;
+
+      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=".concat(val)).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        console.log(data);
+      }).catch(console.log("error"));
+    });
+
+    this.holder = holder;
+    this.form = this.init();
+    this.setUpEvents();
+  }
+
+  _createClass(Form, [{
+    key: "init",
+    value: function init() {
+      this.holder.insertAdjacentHTML("beforeend", "<div class=\"container\">   \n            <form>\n                <input\n                    type=\"text\"\n                    name=\"searchString\"\n                    id=\"searchString\"\n                    placeholder=\"Search your cocktail\"\n                />\n                <input type=\"submit\" id=\"submitButton\" value=\"search\" />\n            </form>\n        </div>");
+      return this.holder.querySelector("form");
+    }
+  }, {
+    key: "setUpEvents",
+    value: function setUpEvents() {
+      this.form.addEventListener("submit", this.getData);
+    }
+  }]);
+
+  return Form;
+}();
+
+exports.default = Form;
 },{}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _header = _interopRequireDefault(require("./header.js"));
 
+var _footer = _interopRequireDefault(require("./footer.js"));
+
+var _form = _interopRequireDefault(require("./form.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var body = document.body;
+// Imports
+// Variabelen
+var body = document.body; // Code
+
 new _header.default(body);
-},{"./header.js":"js/header.js"}],"../../../../../../../usr/local/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+new _form.default(body);
+new _footer.default(body);
+},{"./header.js":"js/header.js","./footer.js":"js/footer.js","./form.js":"js/form.js"}],"../../../../../../../usr/local/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -187,7 +285,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50209" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50330" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

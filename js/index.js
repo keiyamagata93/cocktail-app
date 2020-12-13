@@ -1,5 +1,13 @@
-import Header from "./header.js"
+// Imports
+import Header from "./header.js";
+import Footer from "./footer.js";
+import Form from "./form.js";
 
-const body = document.body
+// Variabelen
+const body = document.body;
 
-new Header(body)
+
+// Code
+new Header(body);
+new Form(body);
+new Footer(body);

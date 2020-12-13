@@ -1,13 +1,13 @@
-export default class Header{
+export default class Footer{
     constructor(holder){
         this.holder = holder;
         this.init();
     }
     init(){
         this.holder.insertAdjacentHTML("beforeend",
-        `<header>
-            <h1>Cocktail App</h1>
-        </header>`
+        `<footer>
+            <p>Oefening cocktail app - Kei Yamagata</p>
+        </footer>`
         )
     }
 }

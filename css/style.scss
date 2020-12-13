@@ -1,7 +1,18 @@
 @import "reset";
 @import "variables";
 
-body {
-  background-color: #000;
-  
+body{
+  header,footer{
+    text-align: center;
+  }
+  .container{
+    width: 90%;
+    margin: 0 auto;
+  }
+  form{
+    display: flex;
+    input{
+      height: 40px;
+    }
+  }
 }
