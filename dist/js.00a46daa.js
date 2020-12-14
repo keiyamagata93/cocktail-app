@@ -200,7 +200,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Form = /*#__PURE__*/function () {
-  function Form(holder) {
+  function Form(holder, _data) {
     var _this = this;
 
     _classCallCheck(this, Form);
@@ -213,19 +213,31 @@ var Form = /*#__PURE__*/function () {
       fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=".concat(val)).then(function (response) {
         return response.json();
       }).then(function (data) {
-        console.log(data);
-      }).catch(console.log("error"));
+        console.log(data.drinks);
+
+        _this.generateList(data.drinks);
+      }).catch(function (errorObj) {
+        console.log(errorObj);
+      });
+    });
+
+    _defineProperty(this, "generateList", function (cocktails) {
+      _this.gridEl.innerHTML = cocktails.map(function (cocktail) {
+        return "<div>\n                <img src=\"".concat(cocktail.strDrinkThumb, "\">\n                <p>").concat(cocktail.strDrink, "</p>\n            </div>");
+      }).join("");
     });
 
     this.holder = holder;
+    this.data = _data;
     this.form = this.init();
+    this.gridEl = this.holder.querySelector(".grid");
     this.setUpEvents();
   }
 
   _createClass(Form, [{
     key: "init",
     value: function init() {
-      this.holder.insertAdjacentHTML("beforeend", "<div class=\"container\">   \n            <form>\n                <input\n                    type=\"text\"\n                    name=\"searchString\"\n                    id=\"searchString\"\n                    placeholder=\"Search your cocktail\"\n                />\n                <input type=\"submit\" id=\"submitButton\" value=\"search\" />\n            </form>\n        </div>");
+      this.holder.insertAdjacentHTML("beforeend", "<div class=\"container\">   \n            <form>\n                <input\n                    type=\"text\"\n                    name=\"searchString\"\n                    id=\"searchString\"\n                    placeholder=\"Search your cocktail\"\n                />\n                <input type=\"submit\" id=\"submitButton\" value=\"search\" />\n            </form>\n            <div class=\"grid\"></div>\n        </div>");
       return this.holder.querySelector("form");
     }
   }, {
@@ -285,7 +297,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50330" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55454" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -3,6 +3,7 @@ import Header from "./header.js";
 import Footer from "./footer.js";
 import Form from "./form.js";
 
+
 // Variabelen
 const body = document.body;
 

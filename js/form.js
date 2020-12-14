@@ -1,7 +1,9 @@
 export default class Form{
-    constructor(holder){
+    constructor(holder,data){
         this.holder = holder;
+        this.data = data;
         this.form = this.init();
+        this.gridEl = this.holder.querySelector(".grid");
         this.setUpEvents();
     }
     init(){
@@ -16,6 +18,7 @@ export default class Form{
                 />
                 <input type="submit" id="submitButton" value="search" />
             </form>
+            <div class="grid"></div>
         </div>`
         );
         return this.holder.querySelector("form");
@@ -29,8 +32,19 @@ export default class Form{
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${val}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            console.log(data.drinks)
+            this.generateList(data.drinks);
         })
-        .catch(console.log("error"));
+        .catch(errorObj => {
+            console.log(errorObj);
+        });
+    }
+    generateList = (cocktails) => {
+        this.gridEl.innerHTML = cocktails.map(cocktail => 
+            `<div>
+                <img src="${cocktail.strDrinkThumb}">
+                <p>${cocktail.strDrink}</p>
+            </div>`
+        ).join("");
     }
 }
