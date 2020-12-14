@@ -6,7 +6,7 @@ export default class Header{
     init(){
         this.holder.insertAdjacentHTML("beforeend",
         `<header>
-            <h1>Cocktail App</h1>
+            <h1>Cocktail Finder</h1>
         </header>`
         )
     }

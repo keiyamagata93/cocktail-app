@@ -1,3 +1,3 @@
-# Cocktail App
+# Cocktail Finder
 
 Oefening op api en git.

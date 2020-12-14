@@ -15,4 +15,14 @@ body{
       height: 40px;
     }
   }
+  .grid{
+    display: flex;
+    flex-wrap: wrap;
+    .cocktail{
+      margin-right: 20px;
+      img{
+        width: 200px;
+      }
+    }
+  }
 }

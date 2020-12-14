@@ -153,5 +153,18 @@ body form {
 body form input {
   height: 40px;
 }
+body .grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+body .grid .cocktail {
+  margin-right: 20px;
+}
+body .grid .cocktail img {
+  width: 200px;
+}
 
 /*# sourceMappingURL=/style.6b54f5b7.css.map */

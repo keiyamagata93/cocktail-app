@@ -142,7 +142,7 @@ var Header = /*#__PURE__*/function () {
   _createClass(Header, [{
     key: "init",
     value: function init() {
-      this.holder.insertAdjacentHTML("beforeend", "<header>\n            <h1>Cocktail App</h1>\n        </header>");
+      this.holder.insertAdjacentHTML("beforeend", "<header>\n            <h1>Cocktail Finder</h1>\n        </header>");
     }
   }]);
 
@@ -223,7 +223,7 @@ var Form = /*#__PURE__*/function () {
 
     _defineProperty(this, "generateList", function (cocktails) {
       _this.gridEl.innerHTML = cocktails.map(function (cocktail) {
-        return "<div>\n                <img src=\"".concat(cocktail.strDrinkThumb, "\">\n                <p>").concat(cocktail.strDrink, "</p>\n            </div>");
+        return "<div class=\"cocktail\">\n                <img src=\"".concat(cocktail.strDrinkThumb, "\">\n                <p>").concat(cocktail.strDrink, "</p>\n            </div>");
       }).join("");
     });
 
@@ -297,7 +297,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55454" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53917" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -41,7 +41,7 @@ export default class Form{
     }
     generateList = (cocktails) => {
         this.gridEl.innerHTML = cocktails.map(cocktail => 
-            `<div>
+            `<div class="cocktail">
                 <img src="${cocktail.strDrinkThumb}">
                 <p>${cocktail.strDrink}</p>
             </div>`
